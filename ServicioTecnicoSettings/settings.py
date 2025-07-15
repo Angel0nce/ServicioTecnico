@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Clientes",
     "Servicios",
+    "Auth",
+    "bootstrap5",
+
 
 ]
 
@@ -78,11 +85,14 @@ WSGI_APPLICATION = "ServicioTecnicoSettings.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ServicioTecnico',
+        'USER': 'root',
+        'PASSWORD': '77954004',
+        'HOST': 'localhost',  # Or your MySQL server's IP address
+        'PORT': '3306',  # Default MySQL port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -106,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es-eu"
 
 TIME_ZONE = "UTC"
 
